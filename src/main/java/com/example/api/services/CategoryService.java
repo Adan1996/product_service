@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.api.models.entities.Category;
@@ -31,6 +32,10 @@ public class CategoryService {
 
     public Iterable<Category> findAll() {
         return categoryRepo.findAll();
+    }
+
+    public Iterable<Category> findByNameContains(String nama, Pageable pageable) {
+        return categoryRepo.findByNameContains(nama, pageable);
     }
 
     public void removeOne(Long id) {
